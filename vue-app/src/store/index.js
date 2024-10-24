@@ -6,7 +6,7 @@ export default createStore({
   },
   mutations: {
     toggleFavorite(state, character) {
-      const index = state.favorites.findIndex(fav => fav.id === character.id);
+        const index = state.favorites.findIndex(fav => fav.id === character.id);
       if (index === -1) {
         state.favorites.push(character);
       } else {
