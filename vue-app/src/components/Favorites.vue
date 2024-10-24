@@ -1,23 +1,40 @@
 <template>
     <div>
-        <h1>Favorites Characters</h1> 
-        <div class="card-characters" v-for="character in characters" :key="character.id">
-                <img :src="character.photoUrl" :alt="character.photoUrl">
-                <div class="card-characters-info">
-                <h2>{{ character.name }}</h2>
-                <p>Allies: {{ character.allies.join(', ') }}</p>
-                <p>Enemies: {{ character.enemies.join(', ') }}</p>
+        <h1>Favorites</h1>
+        <div v-if="favorites.length">
+            <div v-for="favorite in favorites" :key="favorite.id">
+                <img :src="favorite.photoUrl" :alt="favorite.name">
+                <h2>{{ favorite.name }}</h2>
+                <p>Allies: {{ favorite.allies.join(', ') }}</p>
+                <p>Enemies: {{ favorite.enemies.join(', ') }}</p>
             </div>
+        </div>
+        <div v-else>
+            <p>No favorites added yet.</p>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'Favorites'
+    name: 'Favorites',
+    computed: {
+        favorites() {
+            return this.$store.state.favorites;
+        }
+    }
+
 }
 </script>
 
-<style>
-
+<style scoped>
+h1 {
+    text-align: center;
+    color: white;
+    padding: 15px;
+    background-color: #db6415;
+    font-family: avatar-airbender;
+    font-size: 48px;
+    margin: 50px 500px 50px 500px;
+}
 </style>

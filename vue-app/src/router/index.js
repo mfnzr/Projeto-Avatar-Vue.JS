@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import CharactersView from '../views/CharactersView.vue';
+import FavoritesView from '../views/FavoritesView.vue';
 
 
 const router = createRouter({
@@ -8,6 +9,7 @@ const router = createRouter({
   routes: [
     { path: '/',name: 'home', component: HomeView, meta: { title: 'Home' } },
     { path: '/character', name: 'character', component: () => import('../views/CharactersView.vue'), meta: { title: 'Characters' } },
+    { path: '/favorites', name: 'favorites', component: () => import('../views/FavoritesView.vue'), meta: { title: 'Favorites' } },
   ]
 })
 

@@ -1,7 +1,6 @@
 <template>
     <div class="navbar">
-        <router-link to="/">Home</router-link>
-        <router-link to="/character">Characters</router-link>
+        <router-link to="/character">Home</router-link>
         <router-link to="/favorites">Favorites</router-link>
     </div>
 </template>
@@ -20,28 +19,22 @@
 @media (min-width: 1024px) {
     .navbar {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: end;
         align-items: center;
-        padding: .5rem;
-        margin-left: 15rem;
-        margin-right: 15rem;
+        padding: 1em;
+        background-color: #db6415;
     }
     
     .navbar a {
         text-decoration: none;
         color: white;
-        background-color: #db6415   ;
-        padding: 15px 30px;
-        border: 2px solid white;
-        border-radius: 10px;
+        padding: 5px 20px;
         font-family: avatar-airbender;
-        font-size: 28px;
-        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3)
+        font-size: 24px;
     }
 
     .navbar a:hover {
-        background-color: #005F94;
-        font-size: 30px;
+        color: #005F94;
     }
 }
 </style>

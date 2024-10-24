@@ -1,10 +1,10 @@
-<script setup>
-import HelloWorld from '@/components/HelloWorld.vue';
+<script>
 
 </script>
 
 <template>
-  <main>
-    <HelloWorld msg="Olá!" />
-  </main>
+  <div>
+  </div>
 </template>
+
+
