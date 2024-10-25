@@ -86,6 +86,7 @@ h2 {
     flex-direction: row;
     flex-wrap: wrap;
     margin: 50px 150px 50px 250px;
+    
 }
 
 img {
