@@ -1,6 +1,7 @@
 <template>
     <div>
         <h1>Characters</h1>
+        <Message :msg="msg" v-show="msg" />
         <div class="characters-container">
             <div class="card-characters" v-for="character in characters" :key="character.id">
                 <img :src="character.photoUrl" :alt="character.photoUrl">
@@ -16,6 +17,7 @@
 </template>
 
 <script>
+import Message from './Message.vue';
 import { AllCharacters } from '@/services/HttpService';
 import { computed } from 'vue';
 import { mapMutations } from 'vuex';
@@ -31,6 +33,7 @@ export default {
             name: null,
             allies: null,
             enemies: null,
+            msg: null
         }
     },
     created() {
@@ -38,24 +41,34 @@ export default {
     },
 
     methods: {
+        
         async getAllCharacters() {
             const res = await AllCharacters();
             this.characters = res.data;
         },
-
+        
+        
         toggleFavorite(character) {
             this.$store.commit('toggleFavorite', character);
-        },
 
+            
+            this.msg = 'Favoritado com sucesso';
+            setTimeout(() => {
+                this.msg = null;
+            }, 3000);
+        },
         ...mapMutations(["toggleFavorite"]),
 
-        computed: {
-            favorites() {
-                return this.$store.state.favorites;
-            }
-        }
-    }
 
+    },
+    computed: {
+        favorites() {
+            return this.$store.state.favorites;
+        }
+    },
+    components: {
+        Message,
+    },
 }
 
 </script>
@@ -101,6 +114,14 @@ img {
     align-items: center;
 }
 
+.card-characters:hover {
+    box-shadow: 5px 5px 5px 5px rgba(3, 4, 5, 0.3);
+    transition: .5s;
+    width: 255px;
+    height: 405px;
+
+}
+
 .card-characters-info {
     display: flex;
     flex-direction: column;
@@ -123,5 +144,6 @@ button {
 button:hover {
     background-color: #005F94;
     color: white;
+    transition: .5s;
 }
 </style>

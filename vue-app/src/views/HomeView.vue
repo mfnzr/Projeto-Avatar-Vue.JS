@@ -18,6 +18,6 @@
   img {
     width: 50%;
     height: auto;
-    margin-top: 10rem;
+    margin-top: 5rem;
   }
 </style>

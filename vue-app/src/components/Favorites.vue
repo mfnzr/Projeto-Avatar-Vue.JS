@@ -1,6 +1,7 @@
 <template>
     <div>
         <h1>Favorites</h1>
+        <Message :msg="msg" v-show="msg" />
         <div class="characters-container">
             <div v-if="favorites.length">
                 <div class="card-characters" v-for="favorite in favorites" :key="favorite.id">
@@ -10,7 +11,7 @@
                         <p>Allies: {{ favorite.allies.join(', ') }}</p>
                         <p>Enemies: {{ favorite.enemies.join(', ') }}</p>
                     </div>
-                    <button @click="removeFavorite(favorite)">Remove from favorites</button>
+                    <button @click="removeCharacter(characterId)">Remove from favorites</button>
                 </div>
             </div>
 
@@ -23,10 +24,18 @@
 </template>
 
 <script>
+import Message from './Message.vue';
 import { mapMutations, mapGetters } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
     name: 'Favorites',
+    data() {
+        return {
+            msg: null,
+        }
+    },
+    
     computed: {
         favorites() {
             return this.$store.state.favorites;
@@ -36,8 +45,21 @@ export default {
         ...mapMutations(["toggleFavorite"]),
         removeFavorite(favorite) {
             this.toggleFavorite(favorite);
+        },
+
+        ...mapActions(["removeFavorite"]),
+        removeCharacter(characterId) {
+            this.removeFavorite(characterId);
+
+            this.msg = 'Removido com sucesso';
+            setTimeout(() => {
+            this.msg = null;
+            }, 3000);
         }
-    }
+    },
+    components: {
+        Message,
+    },      
 
 }
 </script>
@@ -83,6 +105,14 @@ img {
     align-items: center;
 }
 
+.card-characters:hover {
+    box-shadow: 5px 5px 5px 5px rgba(3, 4, 5, 0.3);
+    transition: .5s;
+    width: 255px;
+    height: 405px;
+
+}
+
 .card-characters-info {
     display: flex;
     flex-direction: column;
@@ -105,5 +135,6 @@ button {
 button:hover {
     background-color: #005F94;
     color: white;
+    transition: .5s;    
 }
 </style>

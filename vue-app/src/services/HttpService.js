@@ -8,6 +8,6 @@ const HttpService = axios.create({
 });
 
 export const AllCharacters = () => {
-  return axios.get('https://last-airbender-api.fly.dev/api/v1/characters/')
+  return axios.get('https://last-airbender-api.fly.dev/api/v1/characters')
   };
 export default HttpService;

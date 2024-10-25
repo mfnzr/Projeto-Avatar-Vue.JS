@@ -8,7 +8,7 @@
 
 <script>
     export default {
-        name: 'Navbar'
+        name: 'Navbar',
     }
 </script>
 
@@ -30,12 +30,13 @@
         text-decoration: none;
         color: white;
         padding: 5px 20px;
-        font-family: avatar-airbender;
-        font-size: 24px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
     }
 
     .navbar a:hover {
         color: #005F94;
+        transition: .5s;
     }
 }
 </style>
