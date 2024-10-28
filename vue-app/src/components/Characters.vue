@@ -1,7 +1,6 @@
 <template>
     <div>
         <h1>Characters</h1>
-        <Message :msg="msg" v-show="msg" />
         <div class="characters-container">
             <div class="card-characters" v-for="character in characters" :key="character.id">
                 <img :src="character.photoUrl" :alt="character.photoUrl">
@@ -50,12 +49,6 @@ export default {
         
         toggleFavorite(character) {
             this.$store.commit('toggleFavorite', character);
-
-            
-            this.msg = 'Favoritado com sucesso';
-            setTimeout(() => {
-                this.msg = null;
-            }, 3000);
         },
         ...mapMutations(["toggleFavorite"]),
 
@@ -66,9 +59,7 @@ export default {
             return this.$store.state.favorites;
         }
     },
-    components: {
-        Message,
-    },
+
 }
 
 </script>
